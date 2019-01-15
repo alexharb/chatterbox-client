@@ -13,7 +13,7 @@ var FormView = {
       username: App.username,
       text: $('#message').val(),
       roomname: ''
-    }
+    };
     Parse.create(message);
   },
 
