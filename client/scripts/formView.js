@@ -1,9 +1,13 @@
 var FormView = {
 
   $form: $('form'),
+  $text: $('form #message'),
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
+    FormView.$form.on('submit', function() {
+      this.reset();
+    })
   },
 
   handleSubmit: function(event) {
