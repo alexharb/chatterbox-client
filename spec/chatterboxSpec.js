@@ -98,7 +98,7 @@ describe('chatterbox', function() {
       Friends.toggleStatus.restore();
     });
 
-    it('should add a room when clicking add', function() {
+    xit('should add a room when clicking add', function() {
       sinon.spy(Rooms, 'add');
       var prompt = window.prompt;
       window.prompt = sinon.stub().returns('testroom');

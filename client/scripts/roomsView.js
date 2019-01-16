@@ -2,9 +2,21 @@ var RoomsView = {
 
   $button: $('#rooms button'),
   $select: $('#rooms select'),
+  $option: $('option'),
+  
   values: [],
   initialize: function() {
     RoomsView.render();
+    RoomsView.$button.on('click', function() {
+      var roomName = prompt("Please enter your name", "");
+      if(roomName !== '') {
+        RoomsView.renderRoom(roomName);
+      }
+    });
+    RoomsView.$select.change(function() {
+      var value = $(this).val();
+      MessagesView.filterMessage(value);
+    });
   },
 
   render: function() {
@@ -17,6 +29,11 @@ var RoomsView = {
         RoomsView.values.push(_.escape(Rooms.roomList[i]))
       }
     }
+  },
+  
+  renderRoom: function(roomName) {
+    Rooms.roomList.push(_.escape(roomName));
+    RoomsView.render();
   },
   
   make: _.template(`<option value="<%=_.escape(value)%>">

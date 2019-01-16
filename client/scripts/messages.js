@@ -7,7 +7,7 @@ var Messages = {
     var text = message.text;
     var user = message.username;
     var room = message.roomname;
-    var newDiv = MessageView.render({username: user, text: text});
+    var newDiv = MessageView.render({roomname: room, username: user, text: text});
     Messages.oldMessages.push(message.objectId);
     return newDiv;
   }, 
@@ -19,10 +19,9 @@ var Messages = {
         var text = obj.text;
         var user = obj.username;
         var room = obj.roomname;
-        var newDiv = MessageView.render({username: user, text: text});
+        var newDiv = MessageView.render({roomname: room, username: user, text: text});
         MessagesView.$chats.prepend(newDiv);
         Messages.oldMessages.push(obj.objectId);
-        
       }
     }); 
   }

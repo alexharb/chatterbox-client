@@ -22,14 +22,15 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       Messages.results = data.results;
-      RoomsView.initialize();
       if (App.count < 1) {
         MessagesView.initialize();
+        RoomsView.initialize();
         App.count++
       }
     
       callback();
       Messages.updateMessage();
+      RoomsView.render();
     });
   },
 
