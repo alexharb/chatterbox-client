@@ -30,8 +30,13 @@ var MessagesView = {
   },
   
   filterMessage: function(value) {
-    var roomData = $(`*[data-room="${value}"]`);
-    MessagesView.$chats.empty();
-    MessagesView.$chats.prepend(roomData);
+    $('.chat').filter(`.chat:not([data-room='${value}'])`).hide();
+    $('.chat').filter(`.chat[data-room='${value}']`).show();
+    // $previous.each(function(message) {
+    //   $(message).hide();
+    // })
+    // MessagesView.$chats.hide();
+    // var roomData = $(`*[data-room="${value}"]`);
+    // MessagesView.$chats.prepend(roomData);
   },
 };
