@@ -9,29 +9,27 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
+    
     
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    
-    
+    setInterval(App.fetch, 3000);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      Messages = data;
+      Messages.results = data.results;
+      RoomsView.initialize();
       if (App.count < 1) {
-        _.once(MessagesView.initialize());
+        MessagesView.initialize();
         App.count++
       }
     
       callback();
-      MessagesView.updateRender();
-      
-      setInterval(App.fetch, 3000)
+      Messages.updateMessage();
     });
   },
 
