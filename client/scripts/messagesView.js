@@ -14,7 +14,7 @@ var MessagesView = {
   
   
   render: function() {
-    for(var i = 0; i < Messages.results.length; i++) {
+    for (var i = 0; i < Messages.results.length; i++) {
       MessagesView.$chats.append(Messages.makeDiv(Messages.results[i]));
     } 
   },
